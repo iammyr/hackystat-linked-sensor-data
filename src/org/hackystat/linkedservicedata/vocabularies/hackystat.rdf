@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:iswc="http://annotation.semanticweb.org/iswc/iswc.daml#"
+    xmlns:doap="http://usefulinc.com/ns/doap#"
+    xmlns:evoont="http://www.ifi.uzh.ch/ddis/evoont/2008/11/vom/vom.owl"
+    xmlns:owls_process="http://www.daml.org/services/owl-s/1.1/Process.owl"
+    xmlns:sec="http://www.itee.uq.edu.au/~dwood/ontologies/sec.owl"
+    xmlns:sioc="http://rdfs.org/sioc/ns#"
+    xmlns:baetle="http://xmlns.com/baetle/#"
+    xmlns:commontags="http://commontag.org/ns#"
+    xmlns:umbel="http://umbel.org/umbel/sc/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+
+<owl:Ontology rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/">
+
+	<dc:description xml:lang="en">Hackystat RDF vocabulary, described using W3C RDF Schema.
+	It allows to specify additional features about software projects, issues and developers,
+	which has not been found elsewhere.</dc:description>
+	<dc:title xml:lang="en">Hackystat vocabulary</dc:title>
+	<rdfs:label xml:lang="en">Hackystat vocabulary</rdfs:label>
+
+	<dc:contributor>Myriam Leggieri</dc:contributor>
+
+	<dct:issued>2009-08-22</dct:issued>
+
+</owl:Ontology>
+
+ <rdf:Description rdf:about="http://umbel.org/umbel/sc/SoftwareIssue">
+    <rdfs:label>Software Issue</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://commontag.org/ns#TaggedContent" />
+  </rdf:Description>
+
+    <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Knowledge">
+    <rdfs:label>Knowledge about sw development artifacts</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Tool">
+    <rdfs:label>Tool</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Knowledge" />
+  </rdf:Description>
+
+    <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase">
+    <rdfs:label>Development phase</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Developer">
+    <rdfs:label>Developer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+    <rdfs:subClassOf rdf:resource="http://annotation.semanticweb.org/iswc/iswc.daml#Person" />
+  </rdf:Description>
+
+    <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Reviewer">
+    <rdfs:label>Reviewer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+    <rdfs:subClassOf rdf:resource="http://annotation.semanticweb.org/iswc/iswc.daml#Person" />
+  </rdf:Description>
+
+ <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/ProjectManager">
+    <rdfs:label>Project Manager</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+    <rdfs:subClassOf rdf:resource="http://annotation.semanticweb.org/iswc/iswc.daml#Person" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/CodeQuality">
+    <rdfs:label>Code quality</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Strenght">
+    <rdfs:label>Code strenght </rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+     <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/CodeQuality" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Cleanness">
+    <rdfs:label>Code cleanness </rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+     <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/CodeQuality" />
+  </rdf:Description>
+
+   <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Machine">
+    <rdfs:label>Machine</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+     <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Tool" />
+  </rdf:Description>
+
+ <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/OperatingSystem">
+    <rdfs:label>Operating System</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+     <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Tool" />
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/ProgrammingLanguage">
+    <rdfs:label>Programming Language</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Knowledge" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://usefulinc.com/ns/doap#Repository">
+    <rdfs:label>Repository</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Tool" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Command">
+    <rdfs:label>Shell command</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Knowledge" />
+    <rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl/Process" />
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://xmlns.com/baetle/#Issue">
+    <rdfs:label>Issue</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Strenght" />
+  </rdf:Description>
+
+    <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase">
+    <rdfs:label>SW Development phase</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/communicationEffort">
+    <rdfs:label>A developer's effort in communicating with others</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/member">
+    <rdfs:label>A person who has full access to a project</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:subPropertyOf rdf:resource="http://usefulinc.com/ns/doap#developer" />
+    <rdfs:domain rdf:resource="http://usefulinc.com/ns/doap#Project" />
+  </rdf:Description>
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/spectator">
+    <rdfs:label>A person who has read-only access to it</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://usefulinc.com/ns/doap#Project" />
+  </rdf:Description>
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/invitated">
+    <rdfs:label>A person invitated to become member of a project</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://usefulinc.com/ns/doap#Project" />
+  </rdf:Description>
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/ended">
+    <rdfs:label>Date when something was ended, in YYYY-MM-DD form. e.g. 2004-04-05</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://usefulinc.com/ns/doap#Project" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
+  </rdf:Description>
+
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/modified">
+    <rdfs:label>Date of the last modification performed, in YYYY-MM-DD form. e.g. 2004-04-05</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
+  </rdf:Description>
+
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/onMachine">
+    <rdfs:label>Machine on which an event is generated</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+ </rdf:Description>
+
+ <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/onOperatingSystem">
+    <rdfs:label>Operating System in use</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+ </rdf:Description>
+
+  <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/involvedUser">
+    <rdfs:label>User involved in a SW development phase</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://annotation.semanticweb.org/iswc/iswc.daml#Person" />
+    <rdfs:domain rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase" />
+ </rdf:Description>
+
+ <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/project">
+    <rdfs:label>Project in which sw components are contained</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project" />
+ </rdf:Description>
+
+ <rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/author">
+    <rdfs:label>Author</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+ </rdf:Description>
+
+	<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/preceeds">
+    <rdfs:label>A development phase preceeds other phases</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase" />
+    <rdfs:range rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase" />
+    </rdf:Description>
+
+<rdf:Description rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/couldCauses">
+    <rdfs:label>An activity could causes an issue</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase" />
+    <rdfs:range rdf:resource="http://xmlns.com/baetle/#Issue" />
+    </rdf:Description>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/maintainer">
+    <rdfs:label>Maintainer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:inverseOf rdf:resource="http://usefulinc.com/ns/doap#maintainer" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/developer">
+    <rdfs:label>Developer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:inverseOf rdf:resource="http://usefulinc.com/ns/doap#developer" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/documenter">
+    <rdfs:label>documenter</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:inverseOf rdf:resource="http://usefulinc.com/ns/doap#documenter" />
+    </owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/translator">
+    <rdfs:label>translator</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:inverseOf rdf:resource="http://usefulinc.com/ns/doap#translator" />
+    </owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/tester">
+    <rdfs:label>tester</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:inverseOf rdf:resource="http://usefulinc.com/ns/doap#tester" />
+    </owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/helper">
+    <rdfs:label>helper</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:inverseOf rdf:resource="http://usefulinc.com/ns/doap#helper" />
+    </owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/knows">
+    <rdfs:label>what a person knows</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/Knowledge"/>
+	<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/developmentTime">
+    <rdfs:label>Average time spent developing</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/buildQuality">
+    <rdfs:label>Build quality, considering for example, the ratio successCount divided per failures </rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+        <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/unitTestQuality">
+    <rdfs:label>Unit Test quality per month, considering for example, the ratio successCount divided per failures </rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+
+    <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/coverageQuality">
+    <rdfs:label>Coverage quality considering for example, the coverage percentage at a class granularity level </rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+
+
+        <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/amountOfCodeIssues">
+    <rdfs:label>Amount of Code Issues encountered</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+            <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/commitFrequency">
+    <rdfs:label>commit frequency</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+
+    <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/includesPhase">
+    <rdfs:label>a project includes a development phase</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<rdfs:domain rdf:resource="http://usefulinc.com/ns/doap#Project" />
+	<rdfs:range rdf:resource="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/DevelopmentPhase" />
+    </owl:ObjectProperty>
+
+
+    <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/hasParameter">
+    <rdfs:label>a command or process has parameter</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<owl:sameAs rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl/hasParameter" />
+    </owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/hasResult">
+    <rdfs:label>a command or process has result</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<owl:sameAs rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl/hasResult" />
+    </owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/usesTool">
+    <rdfs:label>a project in which a tool is used</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+<rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Project" />
+    </owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/averageValue">
+    <rdfs:label>value obtained after having calculated an average between other values</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/closedTime">
+    <rdfs:label>date and time at which an Issue has been closed</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  <rdfs:domain rdf:resource="http://xmlns.com/baetle/#Issue" />
+    </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/projectOwner">
+    <rdfs:label>creator of a project</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/openedTime">
+    <rdfs:label>date and time at which an Issue has been opened</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  <rdfs:domain rdf:resource="http://xmlns.com/baetle/#Issue" />
+    </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/modifiedTime">
+    <rdfs:label>last date and time at which an Issue has been modified</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  <rdfs:domain rdf:resource="http://xmlns.com/baetle/#Issue" />
+    </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/privacyLevel">
+    <rdfs:label>Level of privacy desired.</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+      <owl:ObjectProperty rdf:about="http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/karma">
+    <rdfs:label>Karma.</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    </owl:ObjectProperty>
+
+</rdf:RDF>

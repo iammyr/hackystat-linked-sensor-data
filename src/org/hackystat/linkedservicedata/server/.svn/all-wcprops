@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/176/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/server
+END
+ServerProperties.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/server/ServerProperties.java
+END
+Server.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/176/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/server/Server.java
+END
+Authenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/server/Authenticator.java
+END

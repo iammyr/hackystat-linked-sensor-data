@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/196/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies
+END
+CommontagVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/143/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/CommontagVocab.java
+END
+iswc.daml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/iswc.daml
+END
+foaf.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/foaf.rdf
+END
+flow.n3
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/flow.n3
+END
+HackystatVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/196/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/HackystatVocab.java
+END
+BaetleVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/BaetleVocab.java
+END
+SiocVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/SiocVocab.java
+END
+VoIDVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/100/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/VoIDVocab.java
+END
+VomVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/96/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/VomVocab.java
+END
+doap.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/doap.rdf
+END
+commontag.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/143/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/commontag.rdf
+END
+sensorbaseSchema.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/sensorbaseSchema.rdf
+END
+IswcVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/IswcVocab.java
+END
+vom.owl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/vom.owl
+END
+Helios_btVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/Helios_btVocab.java
+END
+hackystat.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/196/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/hackystat.rdf
+END
+SecVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/SecVocab.java
+END
+FoafVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/FoafVocab.java
+END
+sioc.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/47/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/sioc.rdf
+END
+HackystatConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/100/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/HackystatConstants.java
+END
+helios_bt.owl
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/54/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/helios_bt.owl
+END
+ProcessVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/ProcessVocab.java
+END
+sec.owl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/sec.owl
+END
+Baetle.n3
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/Baetle.n3
+END
+voID.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/100/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/voID.rdf
+END
+DoapVocab.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/66/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/DoapVocab.java
+END
+Process.owl
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/Process.owl
+END
+sensorbase.rdf
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/9/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/vocabularies/sensorbase.rdf
+END

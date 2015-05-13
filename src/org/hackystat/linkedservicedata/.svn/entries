@@ -1,0 +1,52 @@
+10
+
+dir
+209
+http://hackystat-linked-sensor-data.googlecode.com/svn/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata
+http://hackystat-linked-sensor-data.googlecode.com/svn
+
+
+
+2009-08-24T08:37:52.070626Z
+196
+myriam.leggieri@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b0ffd134-6e4b-11de-98c1-619de02e93b8
+
+test
+dir
+
+vocabularies
+dir
+
+frontsidecache
+dir
+
+sparql
+dir
+
+server
+dir
+
+resource
+dir
+
+externalDatasets
+dir
+
+client
+dir
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/icu4j_3_4.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/sensorbase.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/sensorbase.lib.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/sensorbaseclient.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/telemetry.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/arq.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/iri.jar"/>
+	<classpathentry kind="lib" path="/home/myrtill/HackystatHackerCertification/hackystat-8.3.721-services-bin/hackystat-linkedservicedata/jena.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

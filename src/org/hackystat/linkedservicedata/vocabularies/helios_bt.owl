@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY doap "http://usefulinc.com/ns/doap#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY flow "http://www.w3.org/2005/01/wf/flow#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY bom "http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#" >
+    <!ENTITY helios_bt "http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#"
+     xml:base="http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:bom="http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:flow="http://www.w3.org/2005/01/wf/flow#"
+     xmlns:doap="http://usefulinc.com/ns/doap#"
+     xmlns:helios_bt="http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#">
+    <owl:Ontology rdf:about="">
+        <dc:creator>Olivier Berger</dc:creator>
+        <rdfs:comment xml:lang="en"
+            >Ontology for bugtracker bugs modeling, intended to complement EvoOnt BOM.
+
+The version of bom at http://baetle.googlecode.com/svn/evoont/trunk/bom/bom.owl will be the reference considered here.
+
+	  This ontology results from work undertaken in the frame of the HELIOS project (http://www.helios-platform.org).</rdfs:comment>
+        <owl:imports rdf:resource="http://baetle.googlecode.com/svn/evoont/trunk/bom/bom.owl"/>
+        <owl:imports rdf:resource="http://www.w3.org/2005/01/wf/flow"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#bugtracker -->
+
+    <owl:ObjectProperty rdf:about="#bugtracker">
+        <rdfs:comment
+            >A bugtracker of a project</rdfs:comment>
+        <rdfs:range rdf:resource="#BugTracker"/>
+        <rdfs:domain rdf:resource="&doap;Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#bugtrackerVersion -->
+
+    <owl:ObjectProperty rdf:about="#bugtrackerVersion">
+        <rdfs:domain rdf:resource="#BugTracker"/>
+        <rdfs:range rdf:resource="&bom;Version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#hasIssue -->
+
+    <owl:ObjectProperty rdf:about="#hasIssue">
+        <rdfs:comment
+            >Adding the inverse link between bom:Issue and bom:Component, which was described in the evoont diagram.</rdfs:comment>
+        <rdfs:domain rdf:resource="&bom;Component"/>
+        <rdfs:range rdf:resource="&bom;Issue"/>
+        <owl:inverseOf rdf:resource="&bom;isIssueOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#hasSubIssue -->
+
+    <owl:ObjectProperty rdf:about="#hasSubIssue">
+        <rdfs:comment
+            >An Issue/Task can have subIssues / subTasks, in particular to model the Bug - Task relations in LaunchPad</rdfs:comment>
+        <rdfs:domain rdf:resource="&bom;Issue"/>
+        <rdfs:range rdf:resource="&bom;Issue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#inBugtracker -->
+
+    <owl:ObjectProperty rdf:about="#inBugtracker">
+        <rdfs:comment
+            >An issue is present in a bugtracker</rdfs:comment>
+        <rdfs:range rdf:resource="#BugTracker"/>
+        <rdfs:domain rdf:resource="&bom;Issue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#isDuplicateOf -->
+
+    <owl:ObjectProperty rdf:about="#isDuplicateOf">
+        <rdfs:comment
+            >An Issue is a duplicate of another Issue, and it should be &quot;closed&quot;, only having its duplicate stay open.
+In principle, there should be a restriction here on the state and resolution of that Issue (resolution == duplicate)</rdfs:comment>
+        <owl:equivalentProperty rdf:resource="#isMergedInto"/>
+        <rdfs:range rdf:resource="&bom;Issue"/>
+        <rdfs:domain rdf:resource="&bom;Issue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#isInProduct -->
+
+    <owl:ObjectProperty rdf:about="#isInProduct">
+        <rdfs:domain rdf:resource="&bom;Issue"/>
+        <rdfs:range rdf:resource="&bom;Product"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#isMergedInto -->
+
+    <owl:ObjectProperty rdf:about="#isMergedInto"/>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#reportedAlsoIn -->
+
+    <owl:ObjectProperty rdf:about="#reportedAlsoIn">
+        <rdfs:comment
+            >An Issue can be reported in many different projects / distributions (see LaunchPad&#39;s also affects relations)</rdfs:comment>
+        <rdfs:domain rdf:resource="&bom;Issue"/>
+        <rdfs:range rdf:resource="&bom;Issue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#reportedUpstreamIn -->
+
+    <owl:ObjectProperty rdf:about="#reportedUpstreamIn">
+        <rdfs:comment
+            >A particular case of reportedAlsoIn relation when it affects bugs in a distribution package and its corresponding upstream project&#39;s bug (see forwarded-to link in debbugs)</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#reportedAlsoIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#hasSeverity -->
+
+    <owl:ObjectProperty rdf:about="&bom;hasSeverity"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#isIssueOf -->
+
+    <owl:ObjectProperty rdf:about="&bom;isIssueOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#bugTrackerURL -->
+
+    <owl:DatatypeProperty rdf:about="#bugTrackerURL">
+        <rdfs:domain rdf:resource="#BugTracker"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugTracker -->
+
+    <owl:Class rdf:about="#BugTracker">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaDefect -->
+
+    <owl:Class rdf:about="#BugzillaDefect">
+        <rdfs:subClassOf rdf:resource="&bom;Issue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&bom;hasSeverity"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#BugzillaSeverityblocker"/>
+                            <rdf:Description rdf:about="#BugzillaSeveritycritical"/>
+                            <rdf:Description rdf:about="#BugzillaSeveritymajor"/>
+                            <rdf:Description rdf:about="#BugzillaSeverityminor"/>
+                            <rdf:Description rdf:about="#BugzillaSeveritynormal"/>
+                            <rdf:Description rdf:about="#BugzillaSeveritytrivial"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#BugzillaEnhancement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaEnhancement -->
+
+    <owl:Class rdf:about="#BugzillaEnhancement">
+        <rdfs:subClassOf rdf:resource="&bom;Issue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&bom;hasSeverity"/>
+                <owl:allValuesFrom rdf:resource="#BugzillaSeverityenhancement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaPriorityP1 -->
+
+    <owl:Class rdf:about="#BugzillaPriorityP1">
+        <rdfs:subClassOf rdf:resource="&bom;Priority"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP2"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP3"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP4"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP5"/>
+        <rdfs:comment xml:lang="en"
+            >Complements the Priority class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaPriorityP2 -->
+
+    <owl:Class rdf:about="#BugzillaPriorityP2">
+        <rdfs:subClassOf rdf:resource="&bom;Priority"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP3"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP4"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP5"/>
+        <rdfs:comment
+            >Complements the Priority class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaPriorityP3 -->
+
+    <owl:Class rdf:about="#BugzillaPriorityP3">
+        <rdfs:subClassOf rdf:resource="&bom;Priority"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP4"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP5"/>
+        <rdfs:comment
+            >Complements the Priority class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaPriorityP4 -->
+
+    <owl:Class rdf:about="#BugzillaPriorityP4">
+        <rdfs:subClassOf rdf:resource="&bom;Priority"/>
+        <owl:disjointWith rdf:resource="#BugzillaPriorityP5"/>
+        <rdfs:comment
+            >Complements the Priority class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaPriorityP5 -->
+
+    <owl:Class rdf:about="#BugzillaPriorityP5">
+        <rdfs:subClassOf rdf:resource="&bom;Priority"/>
+        <rdfs:comment
+            >Complements the Priority class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaResolutionDUPLICATE -->
+
+    <owl:Class rdf:about="#BugzillaResolutionDUPLICATE">
+        <rdfs:subClassOf rdf:resource="&bom;Resolution"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionFIXED"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionINVALID"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionMOVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWONTFIX"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWORKSFORME"/>
+        <rdfs:comment
+            >Complements the Resolution class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaResolutionFIXED -->
+
+    <owl:Class rdf:about="#BugzillaResolutionFIXED">
+        <rdfs:subClassOf rdf:resource="&bom;Resolution"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionINVALID"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionMOVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWONTFIX"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWORKSFORME"/>
+        <rdfs:comment
+            >Complements the Resolution class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaResolutionINVALID -->
+
+    <owl:Class rdf:about="#BugzillaResolutionINVALID">
+        <rdfs:subClassOf rdf:resource="&bom;Resolution"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionMOVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWONTFIX"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWORKSFORME"/>
+        <rdfs:comment
+            >Complements the Resolution class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaResolutionMOVED -->
+
+    <owl:Class rdf:about="#BugzillaResolutionMOVED">
+        <rdfs:subClassOf rdf:resource="&bom;Resolution"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWONTFIX"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWORKSFORME"/>
+        <rdfs:comment
+            >Complements the Resolution class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaResolutionWONTFIX -->
+
+    <owl:Class rdf:about="#BugzillaResolutionWONTFIX">
+        <rdfs:subClassOf rdf:resource="&bom;Resolution"/>
+        <owl:disjointWith rdf:resource="#BugzillaResolutionWORKSFORME"/>
+        <rdfs:comment
+            >Complements the Resolution class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaResolutionWORKSFORME -->
+
+    <owl:Class rdf:about="#BugzillaResolutionWORKSFORME">
+        <rdfs:subClassOf rdf:resource="&bom;Resolution"/>
+        <rdfs:comment
+            >Complements the Resolution class by adding Bugzilla specific subclass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeverityblocker -->
+
+    <owl:Class rdf:about="#BugzillaSeverityblocker">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeveritycritical -->
+
+    <owl:Class rdf:about="#BugzillaSeveritycritical">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeverityenhancement -->
+
+    <owl:Class rdf:about="#BugzillaSeverityenhancement">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeveritymajor -->
+
+    <owl:Class rdf:about="#BugzillaSeveritymajor">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeverityminor -->
+
+    <owl:Class rdf:about="#BugzillaSeverityminor">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeveritynormal -->
+
+    <owl:Class rdf:about="#BugzillaSeveritynormal">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaSeveritytrivial -->
+
+    <owl:Class rdf:about="#BugzillaSeveritytrivial">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateASSIGNED -->
+
+    <owl:Class rdf:about="#BugzillaStateASSIGNED">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateCLOSED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateNEW"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateREOPENED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateRESOLVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateUNCONFIRMED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateVERIFIED"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateCLOSED -->
+
+    <owl:Class rdf:about="#BugzillaStateCLOSED">
+        <rdfs:subClassOf rdf:resource="&flow;TerminalState"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateNEW"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateREOPENED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateRESOLVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateUNCONFIRMED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateVERIFIED"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateNEW -->
+
+    <owl:Class rdf:about="#BugzillaStateNEW">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateREOPENED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateRESOLVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateUNCONFIRMED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateVERIFIED"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateREOPENED -->
+
+    <owl:Class rdf:about="#BugzillaStateREOPENED">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateRESOLVED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateUNCONFIRMED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateVERIFIED"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateRESOLVED -->
+
+    <owl:Class rdf:about="#BugzillaStateRESOLVED">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateUNCONFIRMED"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateVERIFIED"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateUNCONFIRMED -->
+
+    <owl:Class rdf:about="#BugzillaStateUNCONFIRMED">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+        <owl:disjointWith rdf:resource="#BugzillaStateVERIFIED"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#BugzillaStateVERIFIED -->
+
+    <owl:Class rdf:about="#BugzillaStateVERIFIED">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsDefect -->
+
+    <owl:Class rdf:about="#DebbugsDefect">
+        <rdfs:subClassOf rdf:resource="&bom;Issue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&bom;hasSeverity"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#DebbugsSeveritycritical"/>
+                            <rdf:Description rdf:about="#DebbugsSeveritygrave"/>
+                            <rdf:Description rdf:about="#DebbugsSeverityimportant"/>
+                            <rdf:Description rdf:about="#DebbugsSeverityminor"/>
+                            <rdf:Description rdf:about="#DebbugsSeveritynormal"/>
+                            <rdf:Description rdf:about="#DebbugsSeverityserious"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#DebbugsEnhancement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsEnhancement -->
+
+    <owl:Class rdf:about="#DebbugsEnhancement">
+        <rdfs:subClassOf rdf:resource="&bom;Issue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&bom;hasSeverity"/>
+                <owl:allValuesFrom rdf:resource="#DebbugsSeveritywishlist"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en"
+            >Enhancements for wishlists</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeveritycritical -->
+
+    <owl:Class rdf:about="#DebbugsSeveritycritical">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeveritygrave -->
+
+    <owl:Class rdf:about="#DebbugsSeveritygrave">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeverityimportant -->
+
+    <owl:Class rdf:about="#DebbugsSeverityimportant">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeverityminor -->
+
+    <owl:Class rdf:about="#DebbugsSeverityminor">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeveritynormal -->
+
+    <owl:Class rdf:about="#DebbugsSeveritynormal">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeverityserious -->
+
+    <owl:Class rdf:about="#DebbugsSeverityserious">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsSeveritywishlist -->
+
+    <owl:Class rdf:about="#DebbugsSeveritywishlist">
+        <rdfs:subClassOf rdf:resource="&bom;Severity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsStatedone -->
+
+    <owl:Class rdf:about="#DebbugsStatedone">
+        <rdfs:subClassOf rdf:resource="&flow;TerminalState"/>
+        <rdfs:comment xml:lang="en"
+            >Only state in UDD bugs.status that we&#39;ll consider terminal</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsStatefixed -->
+
+    <owl:Class rdf:about="#DebbugsStatefixed">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsStateforwarded -->
+
+    <owl:Class rdf:about="#DebbugsStateforwarded">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsStatepending -->
+
+    <owl:Class rdf:about="#DebbugsStatepending">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+    </owl:Class>
+    
+
+
+    <!-- http://picoforge.int-evry.fr/projects/svn/helios_wp3/2009/07/helios_bt.owl#DebbugsStatepending-fixed -->
+
+    <owl:Class rdf:about="#DebbugsStatepending-fixed">
+        <rdfs:subClassOf rdf:resource="&flow;NonTerminalState"/>
+    </owl:Class>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#Project -->
+
+    <owl:Class rdf:about="&doap;Project"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Component -->
+
+    <owl:Class rdf:about="&bom;Component"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Issue -->
+
+    <owl:Class rdf:about="&bom;Issue"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Priority -->
+
+    <owl:Class rdf:about="&bom;Priority"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Product -->
+
+    <owl:Class rdf:about="&bom;Product"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Resolution -->
+
+    <owl:Class rdf:about="&bom;Resolution"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Severity -->
+
+    <owl:Class rdf:about="&bom;Severity"/>
+    
+
+
+    <!-- http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Version -->
+
+    <owl:Class rdf:about="&bom;Version"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- http://www.w3.org/2005/01/wf/flow#NonTerminalState -->
+
+    <owl:Class rdf:about="&flow;NonTerminalState">
+        <rdfs:subClassOf rdf:resource="&flow;State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2005/01/wf/flow#State -->
+
+    <owl:Class rdf:about="&flow;State"/>
+    
+
+
+    <!-- http://www.w3.org/2005/01/wf/flow#TerminalState -->
+
+    <owl:Class rdf:about="&flow;TerminalState">
+        <rdfs:subClassOf rdf:resource="&flow;State"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

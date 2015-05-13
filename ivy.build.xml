@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="ivy" default="install"  xmlns:ivy="antlib:org.apache.ivy.ant" xmlns="antlib:org.apache.tools.ant">
+  <description>
+  Supports downloading of the ivy jar file.
+  This file cannot import build.xml for bootstrapping reasons.
+  </description>
+
+  <!-- Provide Ivy version and installation details. -->
+  <property name="ivy.jar.path" location="${user.home}/.ivy2/ivyjar/" />
+  <property name="library.versions.path" location="${user.home}/.hackystat/library.versions.properties"/>
+
+  <target name="clean-cache" description="Cleans the ivy cache">
+    <ivy:cleancache />
+  </target>
+
+  <target name="install" description="Downloads library version numbers, then uses that to download Ivy.">
+    <antcall target="install.library.versions.properties"/>
+    <property file="${library.versions.path}"/>
+    <antcall target="install.ivy"/>
+  </target>
+
+  <target name="install.ivy" description="Downloads Ivy into lib directory.">
+    <mkdir dir="${ivy.jar.path}"/>
+    <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar"
+         dest="${ivy.jar.path}/ivy.jar" usetimestamp="true"/>
+  </target>
+
+  <target name="install.library.versions.properties" description="Downloads library.versions.properties into .hackystat directory.">
+    <mkdir dir="${user.home}/.hackystat"/>
+    <get src="http://hackystat.googlecode.com/svn/trunk/configfiles/library.versions.properties"
+         dest="${library.versions.path}" usetimestamp="true"/>
+  </target>
+</project>

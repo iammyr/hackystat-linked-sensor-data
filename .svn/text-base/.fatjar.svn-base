@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Fri Jul 10 14:04:54 HST 2009
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=linkedservicedata.jar
+manifest.mergeall=true
+manifest.mainclass=org.hackystat.linkedservicedata.server.Server
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

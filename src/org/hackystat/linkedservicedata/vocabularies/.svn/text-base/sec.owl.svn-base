@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY sec "http://www.itee.uq.edu.au/~dwood/ontologies/sec.owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="&sec;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about=""
+                rdfs:label="Software Engineering Concepts"
+                owl:versionInfo="0.1">
+    <rdfs:comment>An ontology to represent concepts in software engineering, such as object-oriented components and their relationships to each other and external documentation.</rdfs:comment>
+  </owl:Ontology>
+
+<!-- Classes -->
+  <owl:Class rdf:about="#IntegrationTest"
+             rdfs:label="Integration Test">
+    <rdfs:comment>An integration test of a software subsystem.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Test"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Metric"
+             rdfs:label="Metric">
+    <rdfs:comment>An automatically generated metric about a software component.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOSoftwareComponent"/>
+        <owl:onProperty rdf:resource="#isMetricOf"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#OOSoftwareComponent"/>
+    <owl:disjointWith rdf:resource="#Requirement"/>
+    <owl:disjointWith rdf:resource="#Test"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOAbstractClass"
+             rdfs:comment="An Object-Oriented Abstract Class.">
+    <rdfs:label xml:lang="en">OO Abstract Class</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OOClass"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="b4">
+        <owl:allValuesFrom rdf:resource="#OOMethodSignature"/>
+        <owl:onProperty rdf:resource="#hasMethodSignature"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#OOMethodSignature"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOClass"
+             rdfs:comment="An Object-Oriented Class">
+    <rdfs:label xml:lang="en">OO Class</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OOSoftwareComponent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOClass"/>
+        <owl:onProperty rdf:resource="#extendedBy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="b22">
+        <owl:allValuesFrom rdf:resource="#OOPackage"/>
+        <owl:onProperty rdf:resource="#packageMemberOf"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOInterface"/>
+        <owl:onProperty rdf:resource="#implementsInterface"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Requirement"/>
+        <owl:onProperty rdf:resource="#encodesRequirement"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="b13">
+        <owl:allValuesFrom rdf:resource="#IntegrationTest"/>
+        <owl:onProperty rdf:resource="#hasTest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="b21">
+        <owl:allValuesFrom rdf:resource="#UnitTest"/>
+        <owl:onProperty rdf:resource="#hasTest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOMethod"/>
+        <owl:onProperty rdf:resource="#hasMethod"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOClass"/>
+        <owl:onProperty rdf:resource="#extends"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#OOInterface"/>
+    <owl:disjointWith rdf:resource="#OOMethod"/>
+    <owl:disjointWith rdf:resource="#OOMethodSignature"/>
+    <owl:disjointWith rdf:resource="#OOPackage"/>
+    <owl:disjointWith rdf:resource="#OOProgram"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOInterface"
+             rdfs:comment="An Object-Oriented Interface.">
+    <rdfs:label xml:lang="en">OO Interface</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OOSoftwareComponent"/>
+    <rdfs:subClassOf rdf:nodeID="b22"/>
+    <rdfs:subClassOf rdf:nodeID="b4"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOInterface"/>
+        <owl:onProperty rdf:resource="#extendedBy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOInterface"/>
+        <owl:onProperty rdf:resource="#extends"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#OOClass"/>
+    <owl:disjointWith rdf:resource="#OOMethod"/>
+    <owl:disjointWith rdf:resource="#OOMethodSignature"/>
+    <owl:disjointWith rdf:resource="#OOPackage"/>
+    <owl:disjointWith rdf:resource="#OOProgram"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOMethod"
+             rdfs:comment="An Object-Oriented Method.">
+    <rdfs:label xml:lang="en">OO Method</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OOSoftwareComponent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOMethod"/>
+        <owl:onProperty rdf:resource="#usesMethod"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Requirement"/>
+        <owl:onProperty rdf:resource="#entryPointFor"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOMethod"/>
+        <owl:onProperty rdf:resource="#methodUsedBy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:nodeID="b21"/>
+    <owl:disjointWith rdf:resource="#OOClass"/>
+    <owl:disjointWith rdf:resource="#OOInterface"/>
+    <owl:disjointWith rdf:resource="#OOMethodSignature"/>
+    <owl:disjointWith rdf:resource="#OOPackage"/>
+    <owl:disjointWith rdf:resource="#OOProgram"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOMethodSignature"
+             rdfs:comment="An Object-Oriented Method Signature."
+             rdfs:label="OO Method Signature">
+    <rdfs:subClassOf rdf:resource="#OOSoftwareComponent"/>
+    <owl:disjointWith rdf:resource="#OOAbstractClass"/>
+    <owl:disjointWith rdf:resource="#OOClass"/>
+    <owl:disjointWith rdf:resource="#OOInterface"/>
+    <owl:disjointWith rdf:resource="#OOMethod"/>
+    <owl:disjointWith rdf:resource="#OOPackage"/>
+    <owl:disjointWith rdf:resource="#OOProgram"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOPackage"
+             rdfs:comment="An Object-Oriented package of classes."
+             rdfs:label="OO Package">
+    <rdfs:subClassOf rdf:resource="#OOSoftwareComponent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOProgram"/>
+        <owl:onProperty rdf:resource="#packageOf"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="#OOClass"/>
+              <rdf:Description rdf:about="#OOInterface"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty rdf:resource="#hasPackageMember"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:nodeID="b13"/>
+    <owl:disjointWith rdf:resource="#OOClass"/>
+    <owl:disjointWith rdf:resource="#OOInterface"/>
+    <owl:disjointWith rdf:resource="#OOMethod"/>
+    <owl:disjointWith rdf:resource="#OOMethodSignature"/>
+    <owl:disjointWith rdf:resource="#OOProgram"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOProgram"
+             rdfs:comment="An Object-Oriented software program."
+             rdfs:label="OOProgram">
+    <rdfs:subClassOf rdf:resource="#OOSoftwareComponent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOPackage"/>
+        <owl:onProperty rdf:resource="#hasPackage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#OOClass"/>
+    <owl:disjointWith rdf:resource="#OOInterface"/>
+    <owl:disjointWith rdf:resource="#OOMethod"/>
+    <owl:disjointWith rdf:resource="#OOMethodSignature"/>
+    <owl:disjointWith rdf:resource="#OOPackage"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OOSoftwareComponent"
+             rdfs:comment="A Object-Oriented software component."
+             rdfs:label="OO Software Component">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Test"/>
+        <owl:onProperty rdf:resource="#hasTest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Metric"/>
+        <owl:onProperty rdf:resource="#hasMetric"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Metric"/>
+    <owl:disjointWith rdf:resource="#Requirement"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Requirement"
+             rdfs:comment="A requirement for a software system.">
+    <rdfs:label xml:lang="en">Requirement</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOClass"/>
+        <owl:onProperty rdf:resource="#requirementEncodedBy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOMethod"/>
+        <owl:onProperty rdf:resource="#hasEntryPoint"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Metric"/>
+    <owl:disjointWith rdf:resource="#OOSoftwareComponent"/>
+    <owl:disjointWith rdf:resource="#Test"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Test"
+             rdfs:label="Test">
+    <rdfs:comment>An automated test of a software component.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#OOSoftwareComponent"/>
+        <owl:onProperty rdf:resource="#isTestOf"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Metric"/>
+    <owl:disjointWith rdf:resource="#Requirement"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#UnitTest"
+             rdfs:comment="A unit test of a software component."
+             rdfs:label="Unit Test">
+    <rdfs:subClassOf rdf:resource="#Test"/>
+  </owl:Class>
+
+<!-- Annotation Properties -->
+  <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+  <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+  <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+
+<!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="#encodesRequirement">
+    <rdfs:comment>Defines the relationship between an OO Requirement and an OO Class which encodes it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOClass"/>
+    <rdfs:label xml:lang="en">encodes requirement</rdfs:label>
+    <owl:inverseOf rdf:resource="#requirementEncodedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#entryPointFor"
+                      rdfs:label="entry point for">
+    <rdfs:comment>Defines the relationship between a Method and a Requirement, where the Requirement's implemention is best understood by starting with the Method.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOMethod"/>
+    <owl:inverseOf rdf:resource="#hasEntryPoint"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#extendedBy"
+                      rdfs:label="extended by">
+    <rdfs:comment>Defines the relationship between an OO super class and another class which extends it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOSoftwareComponent"/>
+    <owl:inverseOf rdf:resource="#extends"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#extends"
+                      rdfs:label="extends">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:comment xml:lang="en">Defines the relationship between an OO Class which extends another and the OO CLass which it extends.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOSoftwareComponent"/>
+    <owl:inverseOf rdf:resource="#extendedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasEntryPoint"
+                      rdfs:label="has entry point">
+    <rdfs:comment>Defines the relationship between a Requirement and a Method which is the best place to start understanding the Requirement's implementation.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Requirement"/>
+    <owl:inverseOf rdf:resource="#entryPointFor"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasMethod">
+    <rdfs:comment xml:lang="en">Defines the relationship between an Object-Oriented Class and the methods that it contains.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOClass"/>
+    <rdfs:label xml:lang="en">has method</rdfs:label>
+    <owl:inverseOf rdf:resource="#methodOf"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasMethodSignature"
+                      rdfs:label="has method signature">
+    <rdfs:comment>Defines the relationship between an OO Interface or Abstract Class and an OO Method Signature.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#methodSignatureOf"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasMetric"
+                      rdfs:label="has metric">
+    <rdfs:comment>Defines the relationship between an OO Software Component and a Metric which has been calculated for it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOSoftwareComponent"/>
+    <owl:inverseOf rdf:resource="#isMetricOf"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#hasMetricValue"
+                          rdfs:label="has metric value">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment>Defines the relationship between a Metric and its calculated value.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Metric"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#hasPackage"
+                      rdfs:label="has package">
+    <rdfs:comment>Defines the relationship between an OO Program and a Package which it contains.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOProgram"/>
+    <owl:inverseOf rdf:resource="#packageOf"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasPackageMember"
+                      rdfs:label="has Class">
+    <rdfs:comment xml:lang="en">Defines the relationship between an OO Package and the OO Classes/AbstractClasses/Interfaces which belong to it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOPackage"/>
+    <owl:inverseOf rdf:resource="#packageMemberOf"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasTest"
+                      rdfs:label="has test">
+    <rdfs:comment>Defines the relationship between an OO Software Component and an associated Test.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOSoftwareComponent"/>
+    <owl:inverseOf rdf:resource="#isTestOf"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="#hasTestResults"
+                      rdfs:label="has test results">
+    <rdfs:comment>Defines the relationship between a Test and the its results.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Test"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="#implementsInterface"
+                      rdfs:label="implements">
+    <rdfs:comment xml:lang="en">Defines the relationship between an OO Class and an OO Interface which it extends.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOClass"/>
+    <owl:inverseOf rdf:resource="#interfaceImplementedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#interfaceImplementedBy"
+                      rdfs:label="implemented by">
+    <rdfs:comment>Defines the relationship between an OO Interface and an OO Class which implements it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOInterface"/>
+    <owl:inverseOf rdf:resource="#implementsInterface"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#isMetricOf"
+                      rdfs:label="is metric of">
+    <rdfs:comment>Defines the relationship between a Metric and an OO Software Component for which it was calculated.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Metric"/>
+    <owl:inverseOf rdf:resource="#hasMetric"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#isTestOf"
+                      rdfs:label="is test of">
+    <rdfs:comment>Defines the relationship between a Test and an OO Software Component.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Test"/>
+    <owl:inverseOf rdf:resource="#hasTest"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#lastModifiedAt"
+                      rdfs:label="last modified at">
+    <rdfs:comment xml:lang="en">Defines at which date and time a given element was modified.¬¨¬®‚Äö√Ñ‚Ä†</rdfs:comment>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#lastValidatedAt"
+                      rdfs:label="last validated at">
+    <rdfs:comment>Defines at which date and time a given Requirement was validated by a person.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Requirement"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#methodOf"
+                          rdfs:label="method of">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment>Defines the relationship between a method and the Object-Oriented Class which contains it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOMethod"/>
+    <owl:inverseOf rdf:resource="#hasMethod"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#methodSignatureOf"
+                      rdfs:label="method signature of">
+    <rdfs:comment>Defines the relationship between an OO Method Signature and a containing OO Interface or Abstract Class.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasMethodSignature"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#methodUsedBy"
+                      rdfs:label="method used by">
+    <rdfs:comment>Defines the relationship between two OO Methods, from the used Method to the using Method.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOMethod"/>
+    <owl:inverseOf rdf:resource="#usesMethod"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#metricCalculatedAt"
+                          rdfs:label="metric calculated at">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment>Defines the relationship between a Metric and the date-time at which it was calculated.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Metric"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="#packageMemberOf">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Defines the relationship between an OO Class/AbstractClass/Interface and the OO Package to which it belongs.</rdfs:comment>
+    <rdfs:label xml:lang="en">class of</rdfs:label>
+    <owl:inverseOf rdf:resource="#hasPackageMember"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="#packageOf"
+                          rdfs:label="package of">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment>Defines the relationship between an OO Package and the OO Program which contains it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOPackage"/>
+    <owl:inverseOf rdf:resource="#hasPackage"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#requirementEncodedBy">
+    <rdfs:comment xml:lang="en">Defines the relationship between an OO Requirement and an OO Class which encodes it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Requirement"/>
+    <rdfs:label xml:lang="en">requirement encoded by</rdfs:label>
+    <owl:inverseOf rdf:resource="#encodesRequirement"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#succeeded"
+                          rdfs:label="succeeded">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment>Defines the relationship between a Test and a Boolen indicating whether the Test passed or failed.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Test"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="#testedAt"
+                          rdfs:label="tested at">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment>Defines the relationship between a Test and the date-time at which the test was concluded.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Test"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#usesMethod"
+                      rdfs:label="uses method">
+    <rdfs:comment>Defines the relationship between two OO Methods, from the using Method to the used Method.</rdfs:comment>
+    <rdfs:domain rdf:resource="#OOMethod"/>
+    <owl:inverseOf rdf:resource="#methodUsedBy"/>
+  </owl:ObjectProperty>
+</rdf:RDF>

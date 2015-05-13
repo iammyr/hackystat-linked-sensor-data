@@ -1,0 +1,25 @@
+<ivysettings>
+  <settings defaultResolver="chained" />
+
+
+  <resolvers>
+    <chain name="chained">
+
+      <packager name="roundup" buildRoot="${user.home}/.ivy2/packager/build" resourceCache="${user.home}/.ivy2/packager/cache">
+        <ivy pattern="http://ivyroundup.googlecode.com/svn/trunk/repo/modules/[organisation]/[module]/[revision]/ivy.xml" />
+        <artifact pattern="http://ivyroundup.googlecode.com/svn/trunk/repo/modules/[organisation]/[module]/[revision]/packager.xml" />
+      </packager>
+
+      <url name="java.net" m2compatible="true">
+        <ivy pattern="http://download.java.net/maven/2/[organisation]/[module]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+        <artifact pattern="http://download.java.net/maven/2/[organisation]/[module]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+      </url>
+
+      <filesystem name="local-repository">
+        <artifact pattern="${user.home}/.ivy2/local-repository/[organization]/[module]/[revision]/[artifact]-[revision].[ext]" />
+        <ivy pattern="${user.home}/.ivy2/local-repository/[organization]/[module]/[revision]/[module]-[revision].xml" />
+      </filesystem>
+
+    </chain>
+  </resolvers>
+</ivysettings>

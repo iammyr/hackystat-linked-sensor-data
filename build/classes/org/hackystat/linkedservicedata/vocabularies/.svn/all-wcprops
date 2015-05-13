@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies
+END
+VomVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/VomVocab.class
+END
+DoapVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/DoapVocab.class
+END
+IswcVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/IswcVocab.class
+END
+Helios_btVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/Helios_btVocab.class
+END
+ResVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/ResVocab.class
+END
+SecVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/SecVocab.class
+END
+FoafVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/FoafVocab.class
+END
+HackystatVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/HackystatVocab.class
+END
+BaetleVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/BaetleVocab.class
+END
+HackystatConstants.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/HackystatConstants.class
+END
+SiocVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/SiocVocab.class
+END
+ProcessVocab.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/vocabularies/ProcessVocab.class
+END

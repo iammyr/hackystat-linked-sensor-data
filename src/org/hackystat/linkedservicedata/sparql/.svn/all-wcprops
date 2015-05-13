@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/sparql
+END
+UserQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/sparql/UserQuery.java
+END
+SparqlFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/sparql/SparqlFilter.java
+END
+ProjectQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/sparql/ProjectQuery.java
+END
+IssueQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/sparql/IssueQuery.java
+END

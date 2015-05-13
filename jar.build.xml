@@ -1,0 +1,88 @@
+<project name="jar" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant">
+  <description>
+  Provides the target for building a jar file of this service.
+  </description>
+
+  <import file="build.xml" />
+  <property name="tmp.dir" location="${basedir}/tmp" />
+  <property name="tmp.lib.dir" location="${basedir}/tmp-lib" />
+  <property name="build.jar.dir" location="${build.dir}/jar" />
+  <delete dir="${build.jar.dir}" quiet="true"/>
+
+  <target name="jar" depends="jar-standalone, jar-lib">
+  </target>
+
+  <target name="jar-standalone" depends="compile" description="Create linkedservicedata.jar">
+    <!-- Define the directories and distribution name -->
+    <mkdir dir="${tmp.dir}" />
+    <mkdir dir="${build.jar.dir}" />
+    <copy todir="${tmp.dir}">
+      <fileset dir="${basedir}/build/classes" />
+    </copy>
+
+    <!-- Build linkedservicedata.jar -->
+    <unjar src="${lib.dir}/hackystat-sensorbase-uh/sensorbaseclient.jar" dest="${tmp.dir}" />
+  	<unjar src="${lib.dir}/hackystat-sensorbase-uh/sensorbase.lib.jar" dest="${tmp.dir}" />
+  	<unjar src="${lib.dir}/hackystat-sensorbase-uh/sensorbase.jar" dest="${tmp.dir}" />
+  	<unjar src="${lib.dir}/hackystat-analysis-telemetry/telemetry.lib.jar" dest="${tmp.dir}" />
+  	<unjar src="${env.JENA_HOME}/jena.jar" dest="${tmp.dir}" />
+  	<unjar src="${env.JENA_HOME}/iri.jar" dest="${tmp.dir}" />
+  	<unjar src="${env.JENA_HOME}/arq.jar" dest="${tmp.dir}" />
+  	<unjar src="${env.JENA_HOME}/icu4j_3_4.jar" dest="${tmp.dir}" />
+  	<unjar src="${lib.dir}/restlet/org.simpleframework.jar" dest="${tmp.dir}"/>
+  	<unjar src="${lib.dir}/restlet/org.restlet.jar" dest="${tmp.dir}"/>
+  	<unjar src="${lib.dir}/restlet/com.noelios.restlet.jar" dest="${tmp.dir}"/>
+	<unjar src="${lib.dir}/restlet/com.noelios.restlet.ext.net.jar" dest="${tmp.dir}"/>
+  	<unjar src="${lib.dir}/restlet/com.noelios.restlet.ext.simple_3.1.jar" dest="${tmp.dir}"/>
+  	<unjar src="${lib.dir}/xercesxercesImpl.jar" dest="${tmp.dir}"/>
+  	<unjar src="${lib.dir}/xercesxml-apis.jar" dest="${tmp.dir}"/>
+  	<unjar src="${lib.dir}/junit/junit.jar" dest="${tmp.dir}"/>
+
+
+    <jar destfile="${build.jar.dir}/linkedservicedata.jar" basedir="${tmp.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="org.hackystat.linkedservicedata.server.Server" />
+        <attribute name="Implementation-Title" value="Hackystat LinkedServiceData" />
+        <attribute name="Implementation-Version" value="${version}" />
+        <attribute name="Implementation-Vendor" value="Collaborative Software Development Laboratory, University of Hawaii" />
+      </manifest>
+    </jar>
+    <delete dir="${tmp.dir}" />
+  </target>
+
+  <target name="jar-lib" depends="compile" description="Create linkedservicedata.lib.jar, containing just org.hackystat.linkedservicedata code.">
+    <!-- Define the directories and distribution name -->
+    <mkdir dir="${tmp.lib.dir}" />
+    <mkdir dir="${build.jar.dir}" />
+    <copy todir="${tmp.lib.dir}">
+      <fileset dir="${basedir}/build/classes" />
+    </copy>
+
+    <jar destfile="${build.jar.dir}/linkedservicedata.lib.jar" basedir="${tmp.lib.dir}">
+      <manifest>
+        <attribute name="Implementation-Title" value="Hackystat LinkedServiceData" />
+        <attribute name="Implementation-Version" value="${version}" />
+        <attribute name="Implementation-Vendor" value="Collaborative Software Development Laboratory, University of Hawaii" />
+      </manifest>
+    </jar>
+    <delete dir="${tmp.lib.dir}" />
+  </target>
+
+  <!--
+     Ivy publication targets.
+   -->
+  <import file="javadoc.build.xml"/>
+  <target name="publish" depends="jar, javadoc.zip" description="Publish this project in the local ivy repository">
+    <ivy:resolve />
+    <tstamp>
+      <format property="publication-revision" pattern="yyyy.MM.dd.HH.mm.ss" />
+    </tstamp>
+    <ivy:publish artifactspattern="${build.jar.dir}/[artifact].[ext]" resolver="local-repository" pubrevision="${publication-revision}" update="true"/>
+  </target>
+
+  <target name="publish-all" description="Publish all dependent projects, then this one.">
+  	<ant antfile="../hackystat-sensorbase-uh/jar.build.xml" target="publish-all" inheritAll="false"/>
+    <ant antfile="../hackystat-analysis-telemetry/jar.build.xml" target="publish-all" inheritAll="false" />
+    <antcall target="publish" />
+  </target>
+</project>

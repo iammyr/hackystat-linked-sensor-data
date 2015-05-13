@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/160/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/client
+END
+LinkedServiceDataClientException.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/client/LinkedServiceDataClientException.java
+END
+LinkedServiceDataClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/160/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/client/LinkedServiceDataClient.java
+END

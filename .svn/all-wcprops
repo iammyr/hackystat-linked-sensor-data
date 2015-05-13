@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/196/trunk/hackystat-linked-service-data
+END
+sclc.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/sclc.build.xml
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/.project
+END
+common.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/common.build.xml
+END
+.fatjar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/.fatjar
+END
+junit.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/junit.build.xml
+END
+ivysettings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/ivysettings.xml
+END
+checkstyle.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/checkstyle.build.xml
+END
+linkedservicedata.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/linkedservicedata.jar
+END
+hudson.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/hudson.build.xml
+END
+findbugs.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/findbugs.build.xml
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/98/trunk/hackystat-linked-service-data/build.xml
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/.classpath
+END
+dist.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/dist.build.xml
+END
+verify.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/verify.build.xml
+END
+sitemap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/100/trunk/hackystat-linked-service-data/sitemap.xml
+END
+dependencyfinder.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/dependencyfinder.build.xml
+END
+javadoc.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/javadoc.build.xml
+END
+ivy.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/ivy.build.xml
+END
+javancss.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/javancss.build.xml
+END
+ivy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/97/trunk/hackystat-linked-service-data/ivy.xml
+END
+jar.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/98/trunk/hackystat-linked-service-data/jar.build.xml
+END
+emma.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/emma.build.xml
+END
+pmd.build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/53/trunk/hackystat-linked-service-data/pmd.build.xml
+END

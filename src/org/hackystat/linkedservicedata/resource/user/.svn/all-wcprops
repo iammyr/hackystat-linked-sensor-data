@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/167/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/resource/user
+END
+TestUserRestApi.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/167/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/resource/user/TestUserRestApi.java
+END
+UserResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/96/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/resource/user/UserResource.java
+END
+LiSeDUserResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/160/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/resource/user/LiSeDUserResource.java
+END
+UsersResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/162/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/resource/user/UsersResource.java
+END

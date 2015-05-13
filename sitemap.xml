@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:sc="http://sw.deri.org/2007/07/sitemapextension/scschema.xsd">
+  <sc:dataset>
+    <sc:datasetLabel>Hackystat LinkedServiceData dataset</sc:datasetLabel>
+    <sc:datasetURI>http://dasha.ics.hawaii.edu:9875/linkedservicedata/vocab/void</sc:datasetURI>
+    <sc:linkedDataPrefix slicing="subject">http://dasha.ics.hawaii.edu:9875/linkedservicedata/</sc:linkedDataPrefix>
+    <sc:sampleURI>http://dasha.ics.hawaii.edu:9875/linkedservicedata/ping/</sc:sampleURI>
+    <sc:sparqlEndpointLocation slicing="subject-object">
+    http://dasha.ics.hawaii.edu:9875/linkedservicedata/users/sparql?query=
+    </sc:sparqlEndpointLocation>
+    <sc:sparqlEndpointLocation slicing="subject-object">
+    http://dasha.ics.hawaii.edu:9875/linkedservicedata/projects/sparql?query=
+    </sc:sparqlEndpointLocation>
+    <sc:sparqlEndpointLocation slicing="subject-object">
+    http://dasha.ics.hawaii.edu:9875/linkedservicedata/issues/sparql?query=
+    </sc:sparqlEndpointLocation>
+    <changefreq>always</changefreq>
+  </sc:dataset>
+</urlset>

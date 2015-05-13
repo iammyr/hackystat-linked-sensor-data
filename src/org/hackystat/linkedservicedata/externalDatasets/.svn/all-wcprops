@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/100/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets
+END
+SindiceApiManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets/SindiceApiManager.java
+END
+PingTheSemanticWebApiManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/!svn/ver/100/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets/PingTheSemanticWebApiManager.java
+END
+HackystatLiSeDManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets/HackystatLiSeDManager.java
+END
+SioclogManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets/SioclogManager.java
+END
+FoafSearchManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets/FoafSearchManager.java
+END
+OhlohApiManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/84/trunk/hackystat-linked-service-data/src/org/hackystat/linkedservicedata/externalDatasets/OhlohApiManager.java
+END

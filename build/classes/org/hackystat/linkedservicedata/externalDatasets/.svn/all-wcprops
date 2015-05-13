@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/externalDatasets
+END
+FoafSearchManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/externalDatasets/FoafSearchManager.class
+END
+OhlohApiManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/externalDatasets/OhlohApiManager.class
+END
+ProjectSearch_GUI_prototype.class
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/externalDatasets/ProjectSearch_GUI_prototype.class
+END
+HackystatLiSeDManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/externalDatasets/HackystatLiSeDManager.class
+END
+SioclogManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/!svn/ver/63/trunk/hackystat-linked-service-data/build/classes/org/hackystat/linkedservicedata/externalDatasets/SioclogManager.class
+END

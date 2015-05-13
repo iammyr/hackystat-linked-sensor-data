@@ -1,0 +1,167 @@
+@prefix : <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix flow: <http://www.w3.org/2005/01/wf/flow#> .
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Action">
+        <comment>The universal class of things which
+can change the state of a task.
+Included now: Creation, Transition. (Maybe in the future
+more π-calculus constructions such as splitting &#38; merging tasks,
+and import/export of obligations to a foreign opaque system.)</comment>
+        <label>action</label>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Creation">
+        <comment>A creation is a change from existence
+to non-existence
+a task. Typical properties include date and/or source
+(a document causing the transition), and a final state.</comment>
+        <label>creation</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Action"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#NonTerminalState">
+        <comment>A state from which there are transisions.</comment>
+        <label>non-terminal state</label>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2005/01/wf/flow#TerminalState"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#State">
+        <comment>The application ontology defines states.</comment>
+        <label>State</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Class"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Task">
+        <comment>Something to be done in a wide sense,
+	an agenda item at a meeting is one example, but any
+	issue or task in this ontology is such a thing.
+	The requirement for this framework was that it would allow
+	one to customize ontologies for things such as agenda items,
+	action items, working group issues with a spec, w3c Last Call issues,
+	software bugs and administrative requests.
+	In π-calculus, a process.
+	Make your type of issue a subclass of Task.
+	</comment>
+        <label>task</label>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#TerminalState">
+        <comment>A state from which there are no transisions.</comment>
+        <label>terminal state</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Transition">
+        <comment>A transition is a change of state of
+a task. Typical properties include date and/or source
+(a document causing the transition), and a final state.</comment>
+        <label>transition</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Action"/>
+    </Class>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#affects">
+        <domain rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Work"/>
+        <label>affects</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#allowedTransitions">
+        <comment>The state machine is defined
+	by these lists of transition allowed for each issue.
+	(An interesting option in the Web is to make an allowed transition
+	to a state in soemone else's ontology, which in turn allows
+	transitions into many ontologies.  So a finite state maxchine
+	may become very large. In practice this means that a task handed
+	off to another organization may be processed on all kinds of ways.)</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+        <label>allowed transitions</label>
+        <range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#assignee">
+        <comment>Some transitions are parameterized
+	by the person ro group to who a task has been assigned.</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Transition"/>
+        <label>assigned to</label>
+        <range rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#SocialEntity"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#creates">
+        <domain rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Work"/>
+        <label>creates</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </rdf:Property>
+
+    <rdf:Description rdf:about="http://www.w3.org/2005/01/wf/flow#date">
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#DateTime"/>
+    </rdf:Description>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#final">
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Transition"/>
+        <label>to</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#issue">
+        <comment>A transition changes the state of the given issue.</comment>
+        <label>issue</label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#requires">
+        <comment>To be a valid transition,
+		a necessary (but not necessarily sufficuent) condition
+		is that there be recorded these properties for the record</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Transition"/>
+        <label>requires</label>
+        <range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#source">
+        <comment>The source of a transition is
+				the document by which it happened</comment>
+        <label>source</label>
+        <range rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Work"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#state">
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <label>state</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+        <subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#task">
+        <label>task</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </rdf:Property>
+
+    <rdf:Description>
+        <log:is rdf:parseType="Quote">
+            <flow:TerminalState rdf:about="#x">
+            </flow:TerminalState>
+        </log:is>
+        <log:implies rdf:parseType="Quote">
+            <rdf:Description rdf:about="#x">
+                <flow:allowedTransitions rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </log:implies>
+    </rdf:Description>
+
+    <rdf:Description>
+        <log:is rdf:parseType="Quote">
+            <flow:Transition rdf:about="#x">
+                <flow:source rdf:resource="#doc"/>
+                <flow:task rdf:resource="#t"/>
+            </flow:Transition>
+        </log:is>
+        <log:implies rdf:parseType="Quote">
+            <rdf:Description rdf:about="#doc">
+                <flow:affects rdf:resource="#t"/>
+            </rdf:Description>
+        </log:implies>
+    </rdf:Description>
+</rdf:RDF>
